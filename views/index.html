@@ -1,14 +1,42 @@
 <!--Main page-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Wonjun-You, Saehee-Park, Minjung-Jo, Taewook-Nam">
-    <title>Document</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>서버시간</title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
     
+    <header>
+        <!-- 추후에 메뉴바 추가 예정 -->
+    </header>
+
+    <main>
+        <!-- 서버시간, 타이머를 보여주는 섹션 -->
+        <section class="clock">
+            <div id="clock">00:00:00</div>
+        </section>
+
+        <!-- 입력한 주소를 보여주는 섹션 -->
+        <section class="url">
+            <div id="url">https://www.loremipsum.com</div>
+        </section>
+
+        <!-- 서버 주소를 입력받는 섹션 -->
+        <section class="form">
+            <form>
+                <input type="url" placeholder="여기에 주소 입력">
+                <input type="button" value="3분 전 알람">
+                <input type="button" value="타이머 / 서버시간 모드 변경">
+            </form>
+        </section>
+    </main>
+
+    <!-- 스크립트 -->
+    <script src="changemode.js"></script>
+    <script src="servertime.js"></script>
 </body>
 </html>
