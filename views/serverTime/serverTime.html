@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서버 시간</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="/javascript/serverTimeJS.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- 추후에 메뉴바 추가 예정 -->
+    </header>
+
+    <main>
+        <!-- 서버시간, 타이머를 보여주는 섹션 -->
+        <!--시간 임박하면 시계 색깔 red?, font size 1.2~1.5em 등 긴장감을 주는 디자인 필요-->
+        <section class="clock">
+            <div id="clock">00:00:00</div>
+        </section>
+
+        <!-- 입력한 주소를 보여주는 섹션 -->
+        <section class="url">
+            <div id="url">https://www.loremipsum.com</div>
+        </section>
+
+        <!-- 서버 주소를 입력받는 섹션 -->
+        <section class="form">
+            <form id="urlform">
+                <input type="url" id="urlInput" placeholder="여기에 주소 입력">
+                <input type="button" value="GO" onclick="getURL()">
+                <!--알람시간 자유롭게 세팅할 수 있도록 수정-->
+                <input type="button" value="3분 전 알람">
+                <!-- mode 1, 2 event를 통해서 JS파일에서 handling -->
+                <input type="button" value="타이머 / 서버시간 모드 변경">
+            </form>
+        </section>
+    </main>
+
+
+</body>
+</html>
