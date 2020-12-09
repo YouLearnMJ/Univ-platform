@@ -9,13 +9,13 @@ function getRawServerTime(url){
     //if not branch this condition -> it operates only on IE.
     if(window.XMLHttpRequest){
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", url, false);
+        xhr.open("HEAD", url);
         xhr.setRequestHeader("Content-Type", "text/html");
         xhr.send('');
         return xhr.getResponseHeader("Date");
     } else if (window.ActiveXObject){
-        var ActiveXObj = new ActiveXObject('Msxml2.XMLHTTP');
-        ActiveXObj.open('HEAD', url, false);
+        var ActiveXObj = new ActiveXObject('Microsoft.XMLHTTP');
+        ActiveXObj.open('HEAD', url);
         ActiveXObj.setRequestHeader("Content-Type", "text/html");
         ActiveXObj.send('');
         return ActiveXObj.getResponseHeader("Date");
@@ -24,6 +24,7 @@ function getRawServerTime(url){
 
 function getServerTime(url){
     var time = new Date(getRawServerTime(url));
+    console.log(time);
     //여기 저장되는 시간 값은 String.
     var currentHours = time.getHours();
     var currentMinutes = time.getMinutes();
@@ -52,6 +53,7 @@ function getServerTime(url){
     }
 
     console.log(currentHours);
+    console.log(currentMinutes);
 }
 
 //get servertime per 0.1 seconds.
