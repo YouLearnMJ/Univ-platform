@@ -1,25 +1,23 @@
 //서버는 header에 시간을 담아 발송하도록 되어 있다.
 // https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html : HTTP W3문서 참고
-function getURL (){ 
+
+const PROXY_SERVER_URL = "/proxy"
+
+function getURL () { 
     var url = document.getElementById("urlInput").value;
-    getServerTime(url);
+    getRawServerTime(url);
 }
 
-function getRawServerTime(url){
-    //if not branch this condition -> it operates only on IE.
-    if(window.XMLHttpRequest){
-        var xhr = new XMLHttpRequest();
-        xhr.open("HEAD", url);
-        xhr.setRequestHeader("Content-Type", "text/html");
-        xhr.send('');
-        return xhr.getResponseHeader("Date");
-    } else if (window.ActiveXObject){
-        var ActiveXObj = new ActiveXObject('Microsoft.XMLHTTP');
-        ActiveXObj.open('HEAD', url);
-        ActiveXObj.setRequestHeader("Content-Type", "text/html");
-        ActiveXObj.send('');
-        return ActiveXObj.getResponseHeader("Date");
-    }
+function getRawServerTime(url) {
+    axios.post(PROXY_SERVER_URL, {
+        address: url
+    })
+    .then((response) => {
+        console.log(url + " : " + response.data);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 }
 
 function getServerTime(url){
@@ -58,3 +56,5 @@ function getServerTime(url){
 
 //get servertime per 0.1 seconds.
 
+// setInterval('getRawServerTime("https://www.google.com/")', 200);
+// setInterval('getRawServerTime("https://www.naver.com/")', 200);
